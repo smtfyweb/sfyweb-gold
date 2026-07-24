@@ -1,0 +1,126 @@
+/* 
+   SMARTIFY SUBTLE STYLE - Versão Estabilizada
+   Objetivo: Apenas "quebrar a quina" (4px-6px) para um visual sóbrio e moderno.
+*/
+
+:root {
+    --smartify-radius-sm: 4px;
+    --smartify-radius-md: 6px;
+}
+
+/* Aplicação Global com Alta Especificidade */
+body .home-slide, 
+body .banner, 
+body .banner img, 
+body .info-box,
+body .product-default figure,
+body .product-default,
+body .category-content,
+body .post,
+body .sidebar-wrapper,
+body .widget,
+body .menu-vertical,
+body .header-dropdown,
+body .dropdown-menu,
+body .top-notice,
+body .owl-stage-outer,
+body .footer,
+body .tagcloud a,
+body .product-countdown-container,
+body .banner-layer,
+body .label-group .product-label,
+body .newsletter-popup,
+body .mfp-content,
+body .mfp-container,
+body .newsletter-popup-content,
+body .sticky-navbar,
+body .sticky-info,
+body .loading-overlay,
+body .form-section,
+body .brand-slider .owl-item,
+body .payment-icon,
+body .social-icon,
+body .info-boxes-container,
+body .side-menu-wrapper,
+body .header-search-wrapper {
+    border-radius: var(--smartify-radius-md) !important;
+    overflow: hidden !important;
+}
+
+/* Cabeçalhos e Títulos - Arredondamento apenas Superior */
+body .side-menu-title,
+body .widget-title,
+body .sidebar-wrapper .widget-title,
+body .menu-vertical {
+    border-radius: var(--smartify-radius-md) var(--smartify-radius-md) 0 0 !important;
+}
+
+/* Botões e Inputs - Arredondamento Suave */
+body .btn, 
+body .btn-md, 
+body .btn-lg,
+body .btn-add-cart,
+body .btn-icon,
+body .btn-quickview,
+body .form-control,
+body .header-search-wrapper,
+body .header-search-category,
+body .newsletter-popup .btn,
+body .newsletter-popup .form-control {
+    border-radius: var(--smartify-radius-sm) !important;
+}
+
+/* Itens de Lista e Menu */
+body .side-menu,
+body .sidebar-home .widget,
+body .menu-vertical > li > a,
+body .cat-list li,
+body .filter-brand-list li {
+    border-radius: var(--smartify-radius-sm) !important;
+    border: none !important;
+}
+
+/* Ajuste específico para a Barra de Busca (Continuidade) */
+body .header-search-wrapper .form-control,
+body .header-search-wrapper .select-custom,
+body .header-search-wrapper .btn,
+body .header-search-wrapper select {
+    border-radius: 0 !important;
+}
+
+/* Cards de Produto - Efeito Hover */
+body .product-default {
+    transition: all 0.3s ease;
+    border-radius: var(--smartify-radius-md) !important;
+}
+
+body .product-default:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+}
+
+/* Categorias - Suavização e Ajuste de Layout */
+body .product-category {
+    border-radius: var(--smartify-radius-md) !important;
+    overflow: hidden !important;
+    margin-bottom: 30px !important; /* Previne o corte no inferior */
+    background: transparent !important;
+}
+
+body .product-category .category-content {
+    border-radius: 0 0 var(--smartify-radius-md) var(--smartify-radius-md) !important;
+}
+
+/* Legibilidade do Header Dark (Busca e Inputs) */
+.header-search-wrapper .form-control,
+.header-search-wrapper .select-custom select {
+    background: #2a2e32 !important; /* Cinza escuro legível */
+    color: #fff !important;
+}
+
+.header-search-wrapper .form-control::placeholder {
+    color: #a8a8a8 !important; /* Placeholder visível */
+}
+
+.header-search-wrapper .select-custom::after {
+    color: #fff !important; /* Seta do select visível */
+}
