@@ -1,1897 +1,316 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SfyWeb Gold — Vitrine de Templates eCommerce</title>
+<meta name="description" content="SfyWeb Gold — 42 templates eCommerce premium. Escolha, personalize e lance sua loja.">
+<meta name="author" content="SfyWeb">
+<meta property="og:title" content="SfyWeb Gold — Vitrine de Templates eCommerce">
+<meta property="og:url" content="https://smtfyweb.github.io/sfyweb-gold/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-	<!-- Básico -->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  :root {
+    --gold: #f5c518;
+    --gold-dark: #c9a000;
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1c1c1c;
+    --border: #262626;
+    --text: #f0f0f0;
+    --muted: #666;
+  }
 
-	<title>SfyWeb Gold — Vitrine de Templates eCommerce</title>
+  body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-	<meta name="keywords" content="sfyweb, templates ecommerce, loja virtual, html gold" />
-	<meta name="description" content="SfyWeb Gold — 42 templates eCommerce premium eCommerce prontos para usar. Escolha o seu e lance sua loja online.">
-	<meta name="author" content="SfyWeb">
+  /* ── HEADER ── */
+  header {
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 0.4rem; }
+  .logo-gold { color: var(--gold); }
+  .badge-gold {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #000; font-size: 0.6rem; font-weight: 800;
+    padding: 0.15rem 0.55rem; border-radius: 2rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .header-count { color: var(--muted); font-size: 0.82rem; }
 
-	<!-- Open Graph -->
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="SfyWeb Gold — Vitrine de Templates eCommerce">
-	<meta property="og:description" content="45 templates eCommerce prontos para usar. Escolha, personalize e lance sua loja.">
-	<meta property="og:url" content="https://smtfyweb.github.io/sfyweb-gold/">
+  /* ── HERO ── */
+  .hero {
+    padding: 5rem 2rem 3rem;
+    text-align: center;
+    background: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%);
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 2rem; padding: 0.3rem 1rem;
+    font-size: 0.75rem; font-weight: 600; color: var(--gold);
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -1px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { color: var(--muted); margin-top: 1rem; font-size: 1.05rem; max-width: 480px; margin-inline: auto; }
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="landing/img/favicon.ico" type="image/x-icon" />
-	<link rel="apple-touch-icon" href="landing/img/apple-touch-icon.png">
+  /* ── FILTERS ── */
+  .filters {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 0.5rem; padding: 2.5rem 1.5rem 1.5rem;
+    position: sticky; top: 64px; z-index: 50;
+    background: linear-gradient(to bottom, var(--bg) 70%, transparent);
+  }
+  .filter-btn {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--muted); padding: 0.5rem 1.2rem;
+    border-radius: 2rem; cursor: pointer;
+    font-family: 'Poppins', sans-serif; font-size: 0.82rem; font-weight: 600;
+    transition: all 0.2s ease; white-space: nowrap;
+  }
+  .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .filter-btn.active {
+    background: var(--gold); color: #000;
+    border-color: var(--gold); font-weight: 700;
+  }
 
-	<!-- CSS Crítico (above the fold) -->
-	<link rel="stylesheet" href="landing/css/landing.critical.min.css">
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem; padding: 1.5rem 2rem 4rem;
+    max-width: 1440px; margin: 0 auto;
+  }
 
-	<!-- Mobile Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+  /* ── CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: 0 16px 40px rgba(245,197,24,0.12);
+  }
+  .card.hidden { display: none; }
 
-	<!-- Preload de Fontes -->
-	<link rel="preload" href="landing/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font" type="font/woff2"
-		crossorigin="anonymous">
-	<link rel="preload" href="landing/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font" type="font/woff2"
-		crossorigin="anonymous">
-	<link rel="preload" href="landing/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" type="font/woff2"
-		crossorigin="anonymous">
+  /* thumbnail */
+  .card-thumb {
+    display: block; position: relative;
+    overflow: hidden; aspect-ratio: 16/10;
+    background: var(--surface2);
+    text-decoration: none;
+  }
+  .card-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+  .card:hover .card-thumb img { transform: scale(1.04); }
 
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800" rel="stylesheet" type="text/css">
+  .card-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.25s ease;
+  }
+  .card:hover .card-overlay { opacity: 1; }
+  .btn-preview {
+    background: var(--gold); color: #000;
+    font-size: 0.8rem; font-weight: 700;
+    padding: 0.6rem 1.4rem; border-radius: 2rem;
+    text-decoration: none; letter-spacing: 0.5px;
+    transform: translateY(6px); transition: transform 0.25s ease;
+  }
+  .card:hover .btn-preview { transform: translateY(0); }
 
-	<!-- Theme CSS Crítico -->
-	<link rel="stylesheet" href="landing/css/theme-elements.critical.min.css">
+  .card-num {
+    position: absolute; top: 10px; left: 10px;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+    color: var(--gold); font-size: 0.65rem; font-weight: 700;
+    padding: 0.2rem 0.6rem; border-radius: 2rem;
+    letter-spacing: 1px;
+  }
 
-	<!-- Vendor CSS -->
-	<link rel="stylesheet" href="landing/vendor/fontawesome-free/css/all.mini.min.css">
-	<link rel="stylesheet" href="landing/vendor/owl.carousel/assets/owl.carousel.min.css">
-	<link rel="stylesheet" href="landing/vendor/owl.carousel/assets/owl.theme.default.min.css">
+  /* body */
+  .card-body { padding: 1rem 1.2rem 0.6rem; }
+  .card-title { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+  .card-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
 
+  /* actions */
+  .card-actions { padding: 0.6rem 1.2rem 1.2rem; }
+  .btn-demo {
+    display: block; text-align: center;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold);
+    font-weight: 700; font-size: 0.8rem;
+    padding: 0.55rem; border-radius: 8px;
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .btn-demo:hover { background: var(--gold); color: #000; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 2rem;
+    color: var(--muted); font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+  footer strong { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero { padding: 3rem 1.2rem 2rem; }
+    .grid { padding: 1rem 1rem 3rem; gap: 1rem; }
+    .filters { padding: 1.5rem 1rem 1rem; gap: 0.4rem; }
+    .filter-btn { padding: 0.4rem 0.9rem; font-size: 0.76rem; }
+  }
+</style>
 </head>
+<body>
 
-<body class="alternative-font-4 loading-overlay-showing" data-plugin-page-transition data-loading-overlay
-	data-plugin-options="{'hideDelay': 100}">
-	<div class="loading-overlay">
-		<div class="bounce-loader">
-			<div class="bounce1"></div>
-			<div class="bounce2"></div>
-			<div class="bounce3"></div>
-		</div>
-	</div>
-
-	<div class="body">
-		<!-- ========== HEADER ========== -->
-		<header id="sweb-header" class="header-transparent header-effect-shrink"
-			data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': false, 'stickyEnableOnMobile': true, 'stickyStartAt': 70, 'stickyChangeLogo': false, 'stickyHeaderContainerHeight': 70}">
-			<div class="header-body border-top-0 bg-dark box-shadow-none">
-				<div class="header-container container">
-					<div class="header-row">
-						<div class="header-column">
-							<div class="header-row">
-								<div class="header-logo appear-animation" data-appear-animation="fadeIn"
-									data-plugin-options="{'accY': 100}">
-									<a href="#" class="goto-top" aria-label="SfyWeb Gold - Início">
-										<span style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 1.5rem; color: #0169fe; letter-spacing: -0.5px; line-height: 1;">
-											SfyWeb <span style="color: #ffd700;">Gold</span>
-										</span>
-									</a>
-								</div>
-							</div>
-						</div>
-						<div class="header-column justify-content-end">
-							<div class="header-row">
-								<div class="header-nav header-nav-links header-nav-light-text header-nav-dropdowns-dark">
-									<div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-text-capitalize header-nav-main-text-size-2 header-nav-main-mobile-dark header-nav-main-effect-1 header-nav-main-sub-effect-1 appear-animation"
-										data-appear-animation="fadeIn" data-plugin-options="{'accY': 100}">
-										<nav class="collapse">
-											<ul class="nav nav-pills mobile-nav" id="sweb-main-nav">
-												<li class="dropdown"> <a class="dropdown-item dropdown-toggle" data-hash
-														data-hash-offset="130" href="#sweb-templates"> Templates </a> </li>
-												<li class="dropdown"> <a class="dropdown-item dropdown-toggle" data-hash
-														data-hash-offset="130" href="#sweb-sobre"> Sobre </a> </li>
-											</ul>
-										</nav>
-									</div>
-									<a class="btn btn-gradient btn-rounded font-weight-semibold px-4 ml-3 appear-animation"
-										data-appear-animation="fadeIn" data-plugin-options="{'accY': 100}"
-										href="#sweb-templates" data-hash data-hash-offset="130">Ver Templates</a>
-									<button class="btn header-btn-collapse-nav" data-toggle="collapse"
-										data-target=".header-nav-main nav"><i class="fa fa-bars"></i></button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
-
-		<div role="main" class="main">
-
-			<!-- ========== HERO ========== -->
-			<section
-				class="section section-concept section-no-border section-dark section-angled section-angled-reverse pt-5 m-0"
-				id="section-concept"
-				style="background-size: cover; background-position: center; animation-duration: 750ms; animation-delay: 300ms; animation-fill-mode: forwards;"
-				data-plugin-lazyload data-plugin-options="{'threshold': 500}" data-original="landing/img/header_bg.jpg">
-				<div class="section-angled-layer-bottom bg-light" style="padding: 8rem 0;"></div>
-				<div class="container pt-5 mt-5">
-					<div class="row align-items-center pt-3">
-						<div class="col-lg-5 mb-5">
-							<h5 class="text-primary font-weight-bold mb-1 appear-animation"
-								data-appear-animation="fadeInUpShorter" data-appear-animation-duration="750">SMARTIFY WEB
-								— GALERIA DE TEMPLATES</h5>
-							<h1 class="font-weight-bold text-12 line-height-2 mb-3 appear-animation"
-								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400"
-								data-appear-animation-duration="750">Templates<br>eCommerce<span
-									class="appear-animation" data-appear-animation="fadeInRightShorter"
-									data-appear-animation-delay="600" data-appear-animation-duration="800"><span
-										class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2">prontos</span></span>
-							</h1>
-							<p class="custom-font-size-1 appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="900" data-appear-animation-duration="750">Navegue pela nossa
-								galeria, escolha o template ideal para o seu negócio e lance sua loja online com
-								qualidade profissional. <a href="#sweb-templates" data-hash data-hash-offset="120"
-									class="text-color-light font-weight-semibold text-1 d-block">VER TEMPLATES <i
-										class="fa fa-long-arrow-alt-right ml-1"></i></a></p>
-						</div>
-						<div class="col-lg-6 offset-lg-1 mb-5 appear-animation" data-appear-animation="fadeIn"
-							data-appear-animation-delay="1200" data-appear-animation-duration="750">
-							<div class="border-width-10 border-color-light clearfix border border-radius">
-								<div class="owl-carousel owl-theme mb-0 intro-slider"
-									data-plugin-options="{'items': 1, 'loop': true, 'autoplay': true, 'nav': false, 'dots': false}">
-									<img src="landing/img/landing-sliders/slide-1.jpg" width="500" height="370"
-										alt="Template Preview" />
-									<img src="landing/img/landing-sliders/slide-2.jpg" width="500" height="370"
-										alt="Template Preview" />
-									<img src="landing/img/landing-sliders/slide-3.jpg" width="500" height="370"
-										alt="Template Preview" />
-									<img src="landing/img/landing-sliders/slide-4.jpg" width="500" height="370"
-										alt="Template Preview" />
-									<img src="landing/img/landing-sliders/slide-5.jpg" width="500" height="370"
-										alt="Template Preview" />
-								</div>
-							</div>
-						</div>
-						<div class="col-md-8 col-lg-6 col-xl-5 custom-header-bar py-4 pr-5 appear-animation z-index-2"
-							data-appear-animation="maskRight" data-appear-animation-delay="1200"
-							data-appear-animation-duration="750">
-							<div class="appear-animation" data-appear-animation="fadeInRightShorter"
-								data-appear-animation-delay="1500">
-								<div
-									class="star-rating-wrap d-flex align-items-center justify-content-center position-relative text-dark text-5 py-2 mb-2">
-									<i class="fas fa-star"></i><i class="fas fa-star ml-1"></i><i
-										class="fas fa-star ml-1"></i><i class="fas fa-star ml-1"></i><i
-										class="fas fa-star ml-1"></i>
-								</div>
-								<h4 class="position-relative text-center font-weight-bold text-7 line-height-2 mb-0">
-									Qualidade Profissional</h4>
-								<p class="position-relative text-center font-weight-normal mb-1">Templates premium,
-									responsivos e prontos para uso</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- ========== SOBRE / INTRO ========== -->
-			<section id="sweb-sobre" class="section section-no-border section-angled bg-light pt-0 pb-5 m-0">
-				<div class="section-angled-layer-bottom section-angled-layer-increase-angle bg-color-light-scale-1"
-					style="padding: 21rem 0;"></div>
-				<div class="container pb-5" style="min-height: 600px;">
-					<div class="row mb-5 pb-lg-3 counters">
-						<div class="col-lg-10 text-center offset-lg-1">
-							<h2 class="font-weight-bold text-9 mb-0 appear-animation"
-								data-appear-animation="fadeInUpShorter" data-appear-animation-duration="750"
-								data-plugin-options="{'accY': -200}">Templates Prontos para o seu<br>Negócio Online
-							</h2>
-							<p class="sub-title text-primary text-4 font-weight-semibold positive-ls-2 mt-2 mb-4 appear-animation"
-								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400"
-								data-appear-animation-duration="750">SUA LOJA ONLINE <span
-									class="highlighted-word highlighted-word-animation-1 highlighted-word-animation-1-2 highlighted-word-animation-1 highlighted-word-animation-1-no-rotate alternative-font-4 font-weight-semibold line-height-2 pb-2">EM
-									OUTRO NÍVEL</span></p>
-							<p class="text-1rem text-color-default negative-ls-05 pt-3 pb-4 mb-5 appear-animation"
-								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500"
-								data-appear-animation-duration="750">A SfyWeb oferece templates eCommerce de alta
-								qualidade, desenvolvidos por especialistas em experiência do usuário. Escolha o design
-								ideal, personalize para a sua marca e lance com confiança.
-							</p>
-						</div>
-						<div class="col-sm-6 col-lg-4 offset-lg-2 counter mb-5 mb-md-0">
-							<div class="appear-animation" data-appear-animation="fadeInLeftShorter"
-								data-appear-animation-delay="750" data-appear-animation-duration="750">
-								<h3 class="font-weight-extra-bold text-14 line-height-1 mb-2" data-to="45"
-									data-append="+">0</h3>
-								<label class="font-weight-semibold negative-ls-1 text-color-dark mb-0">Templates
-									Disponíveis</label>
-								<p class="mb-0"><a href="#sweb-templates" data-hash data-hash-offset="120"
-										class="text-color-primary d-flex align-items-center justify-content-center text-4 font-weight-semibold text-decoration-none">VER
-										TODOS <i class="fas fa-long-arrow-alt-right ml-2 text-4 mb-0"></i></a></p>
-							</div>
-						</div>
-						<div class="col-sm-6 col-lg-4 counter divider-left-border">
-							<div class="appear-animation" data-appear-animation="fadeInRightShorter"
-								data-appear-animation-delay="750" data-appear-animation-duration="750">
-								<h3 class="font-weight-extra-bold text-14 line-height-1 mb-2" data-to="100"
-									data-append="% ">0</h3>
-								<label class="font-weight-semibold negative-ls-1 text-color-dark mb-0">Responsivos e
-									Prontos</label>
-								<p class="mb-0"><a href="#sweb-templates" data-hash data-hash-offset="120"
-										class="text-color-primary d-flex align-items-center justify-content-center text-4 font-weight-semibold text-decoration-none">EXPLORAR
-										<i class="fas fa-long-arrow-alt-right ml-2 text-4 mb-0"></i></a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- ========== GRID DE TEMPLATES ========== -->
-			<section id="sweb-templates" class="section section-no-border section-light position-relative z-index-3 pt-0 m-0">
-				<div class="container">
-					<div class="row align-items-center appear-animation" data-appear-animation="fadeInUpShorter"
-						data-appear-animation-delay="250" data-appear-animation-duration="750">
-						<div class="col-lg-8 offset-lg-2 text-center">
-							<p class="d-flex align-items-center justify-content-center font-weight-bold text-color-dark text-8 negative-ls-1 pb-2 mb-5 appear-animation"
-								data-appear-animation="blurIn" data-appear-animation-delay="600"><span
-									class="highlighted-word highlighted-word-animation-1 highlighted-word-animation-1-2 highlighted-word-animation-1-2-dark highlighted-word-animation-1 highlighted-word-animation-1-no-rotate alternative-font-4 font-weight-extra-bold line-height-1 text-9 mr-3">45</span>
-								Templates Prontos para Usar</p>
-						</div>
-					</div>
-				</div>
-				<div class="container-fluid">
-					<div class="text-center mb-5 appear-animation" data-appear-animation="fadeIn"
-						data-appear-animation-delay="400" data-appear-animation-duration="750">
-						<ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center mb-0"
-							id="sweb-filter-nav" data-sort-id="sweb-portfolio" data-option-key="filter"
-							data-plugin-options="{'layoutMode': 'masonry', 'filter': '*', 'useHash': false}">
-							<li class="nav-item active" data-option-value="*"><a class="nav-link custom-nav-link active"
-									href="#">Show All</a></li>
-							<li class="nav-item" data-option-value=".demo"><a class="nav-link custom-nav-link"
-									href="#">Demo</a></li>
-							<li class="nav-item" data-option-value=".shop"><a class="nav-link custom-nav-link"
-									href="#">Shop</a></li>
-							<li class="nav-item" data-option-value=".product"><a class="nav-link custom-nav-link"
-									href="#">Product</a></li>
-							<li class="nav-item" data-option-value=".other"><a class="nav-link custom-nav-link"
-									href="#">Others</a></li>
-						</ul>
-					</div>
-					<div class="row portfolio-list sort-destination overflow-visible" data-sort-id="portfolio">
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo1.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop1.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 1</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo2.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop2.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 2</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="400" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo3.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop3.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 3</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="600" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo4.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop4.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 4</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo5.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop5.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 5</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo6.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop6.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 6</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="400" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo7.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop7.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 7</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="600" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo8.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop8.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 8</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo9.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop9.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 9</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo10.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop10.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 10</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo11.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop11.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 11</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo12.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop12.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 12</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo13.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop13.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 13</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo14.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop14.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 14</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo15.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop15.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 15</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo16.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop16.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 16</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo17.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop17.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 17</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo18.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop18.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 18</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo19.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop19.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 19</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo20.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop20.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 20</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo21.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop21.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 21</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo22.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop22.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 22</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo23.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop23.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 23</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo24.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop24.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 24</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo25.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop25.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 25</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo26.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop26.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 26</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo27.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop27.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 27</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo28.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop28.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 28</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo29.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop29.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 29</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo30.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop30.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 30</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo31.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop31.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 31</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo32.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop32.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 32</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo33.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop33.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 33</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo34.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop34.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 34</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo35.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop35.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 35</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo36.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop36.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 36</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo37.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop37.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 37</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo38.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop38.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 38</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo39.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop39.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 39</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo40.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop40.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 40</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo41.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop41.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 41</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo42.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop42.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 42</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo1-dark.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop1-dark.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 1 Dark</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo2-dark.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop2-dark.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 2 Dark</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item demo">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="demo4-dark.html" title="demo">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/previews/shop4-dark.jpg" width="350"
-													height="259" class="img-fluid" alt="">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Demo 4 Dark</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/full-width.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Full Width</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-banner-boxed-image.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/boxed-image.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Boxed Image</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-off-canvas.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/off-canvas.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Off Canvas</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-sidebar-right.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/right-sidebar.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Right Sidebar</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-horizontal-filter1.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/filter-one.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Horizontal Filter 1</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-horizontal-filter2.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/filter-two.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Horizontal Filter 2</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-list.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/list.jpg" width="350" height="259"
-													class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">List Type</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-infinite-scroll.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/infinite.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Infinite Scroll</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-4col.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/4-cols.jpg" width="350" height="259"
-													class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">4 Cols</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-5col.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/5-cols.jpg" width="350" height="259"
-													class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">5 Cols</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-6col.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/6-cols.jpg" width="350" height="259"
-													class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">6 Cols</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-7col.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/7-cols.jpg" width="350" height="259"
-													class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">7 Cols</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item shop">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="category-8col.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/shop/8-cols.jpg" width="350" height="259"
-													class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">8 Cols</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/simple.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Simple</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-variable.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/variable.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Variable</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-sidebar-left.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/left-sidebar.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Left Sidebar</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-sidebar-right.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/right-sidebar.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Right Sidebar</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-addcart-sticky.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/cart-sticky.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Cart Sticky</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-extended-layout.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/extended.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Extended</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-grid-layout.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/grid.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Grid</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-full-width.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/full-width.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Full Width</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-sticky-info.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/sticky-info.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Sticky Info</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-sticky-both.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/sticky-both.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Sticky Both</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-transparent-image.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/transparent-image.jpg"
-													width="350" height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Transparent Image</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item product">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="product-center-vertical.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/product/center-vertical.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Center Vertical</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item other">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="wishlist.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/others/wishlist.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Wishlist</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item other">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="cart.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/others/cart.jpg" width="350" height="259"
-													class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Shopping Cart</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item other">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="checkout.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/others/checkout.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Checkout</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item other">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="dashboard.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/others/dashboard.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Dashboard</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item other">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="about.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/others/about.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">About Us</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item other">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="blog.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/others/blog.jpg" width="350" height="259"
-													class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Blog</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item other">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="single.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/others/blog-post.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Blog Single</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item other">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="login.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/others/login.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Log In</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-3 col-xl-1-5 isotope-item other">
-							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-								data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class="portfolio-item hover-effect-1 text-center">
-									<a href="forgot-password.html">
-										<span
-											class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-											<span class="thumb-info-wrapper thumb-info-wrapper-demos m-0">
-												<img data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}"
-													src="landing/img/lazy.png" data-plugin-lazyload
-													data-original="landing/img/others/password.jpg" width="350"
-													height="259" class="img-fluid" alt="preview">
-											</span>
-										</span>
-									</a>
-									<h5 class="text-color-dark text-capitalize mt-3">Forget Password</h5>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</section>
-
-		</div>
-
-		<!-- ========== FOOTER ========== -->
-		<footer id="sweb-footer"
-			class="bg-color-dark-scale-2 border border-right-0 border-left-0 border-bottom-0 border-color-light-3 mt-0">
-			<div class="container text-center my-3 py-5">
-				<a href="#" class="goto-top" aria-label="SfyWeb Gold - Voltar ao topo">
-					<span class="mb-4 d-block appear-animation" data-appear-animation="fadeIn"
-						data-appear-animation-delay="300"
-						style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 1.8rem; color: #0169fe; letter-spacing: -0.5px;">
-						SfyWeb <span style="color: #ffd700;">Gold</span>
-					</span>
-				</a>
-				<p class="text-4 mb-4 text-color-light">Templates eCommerce prontos para o seu negócio online.</p>
-				<ul class="social-icons social-icons-big social-icons-dark-2">
-					<li class="social-icons-facebook"><a href="#" target="_blank" title="Facebook" rel="noopener"><i
-								class="fab fa-facebook-f"></i></a></li>
-					<li class="social-icons-twitter"><a href="#" target="_blank" title="Twitter" rel="noopener"><i
-								class="fab fa-twitter"></i></a></li>
-					<li class="social-icons-linkedin"><a href="#" target="_blank" title="LinkedIn" rel="noopener"><i
-								class="fab fa-linkedin-in"></i></a></li>
-					<li class="social-icons-linkedin"><a href="#" target="_blank" title="YouTube" rel="noopener"><i
-								class="fab fa-youtube"></i></a></li>
-				</ul>
-			</div>
-			<div class="copyright bg-dark py-4">
-				<div class="container text-center py-2">
-					<p class="mb-0 text-2 text-color-light">&copy; 2025 SfyWeb — Todos os direitos reservados.
-					</p>
-				</div>
-			</div>
-		</footer>
-	</div>
-
-	<!-- CSS diferido (carregado após o render) -->
-	<link rel="stylesheet" href="landing/css/landing.min.css">
-	<link rel="stylesheet" href="landing/css/theme-elements.min.css">
-
-	<!-- Vendor JS -->
-	<script src="landing/vendor/jquery/jquery.min.js"></script>
-	<script src="landing/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="landing/vendor/common/common.min.js"></script>
-	<script src="landing/js/plugin.min.js"></script>
-
-	<!-- Theme JS -->
-	<script src="landing/js/theme.min.js"></script>
-
-	<!-- Theme Inicialização -->
-	<script src="landing/js/theme.init.js"></script>
+<header>
+  <div class="logo">SfyWeb <span class="logo-gold">Gold</span><span class="badge-gold">Gold</span></div>
+  <div class="header-count">42 templates premium</div>
+</header>
 
+<div class="hero">
+  <div class="hero-eyebrow">✦ Coleção Premium</div>
+  <h1>Templates para sua <em>loja online</em></h1>
+  <p>42 layouts eCommerce prontos. Escolha, personalize e lance.</p>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" data-filter="all">Todos</button>
+  <button class="filter-btn" data-filter="moda">Moda</button>
+  <button class="filter-btn" data-filter="eletronicos">Eletrônicos</button>
+  <button class="filter-btn" data-filter="casa">Casa & Deco</button>
+  <button class="filter-btn" data-filter="multiuso">Multi-nicho</button>
+  <button class="filter-btn" data-filter="dark">Dark Mode</button>
+  <button class="filter-btn" data-filter="minimalista">Minimalista</button>
+</div>
+
+<div class="grid" id="grid">
+  <div class="card" data-category="moda"><a class="card-thumb" href="demo1.html" target="_blank"><img src="landing/img/previews/shop1.jpg" alt="Demo 1" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">01</span></a><div class="card-body"><div class="card-title">Demo 1</div><div class="card-desc">Moda feminina, layout elegante</div></div><div class="card-actions"><a class="btn-demo" href="demo1.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda dark"><a class="card-thumb" href="demo1-dark.html" target="_blank"><img src="landing/img/previews/shop1-dark.jpg" alt="Demo 1 Dark" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">01 Dark</span></a><div class="card-body"><div class="card-title">Demo 1 — Dark</div><div class="card-desc">Versão dark mode</div></div><div class="card-actions"><a class="btn-demo" href="demo1-dark.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="eletronicos"><a class="card-thumb" href="demo2.html" target="_blank"><img src="landing/img/previews/shop2.jpg" alt="Demo 2" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">02</span></a><div class="card-body"><div class="card-title">Demo 2</div><div class="card-desc">Eletrônicos, layout moderno</div></div><div class="card-actions"><a class="btn-demo" href="demo2.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="eletronicos dark"><a class="card-thumb" href="demo2-dark.html" target="_blank"><img src="landing/img/previews/shop2-dark.jpg" alt="Demo 2 Dark" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">02 Dark</span></a><div class="card-body"><div class="card-title">Demo 2 — Dark</div><div class="card-desc">Versão dark mode</div></div><div class="card-actions"><a class="btn-demo" href="demo2-dark.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo3.html" target="_blank"><img src="landing/img/previews/shop3.jpg" alt="Demo 3" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">03</span></a><div class="card-body"><div class="card-title">Demo 3</div><div class="card-desc">Multi-categoria, destaque hero</div></div><div class="card-actions"><a class="btn-demo" href="demo3.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda dark"><a class="card-thumb" href="demo4.html" target="_blank"><img src="landing/img/previews/shop4.jpg" alt="Demo 4" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">04</span></a><div class="card-body"><div class="card-title">Demo 4</div><div class="card-desc">Moda, grid editorial</div></div><div class="card-actions"><a class="btn-demo" href="demo4.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda dark"><a class="card-thumb" href="demo4-dark.html" target="_blank"><img src="landing/img/previews/shop4-dark.jpg" alt="Demo 4 Dark" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">04 Dark</span></a><div class="card-body"><div class="card-title">Demo 4 — Dark</div><div class="card-desc">Versão dark mode</div></div><div class="card-actions"><a class="btn-demo" href="demo4-dark.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo5.html" target="_blank"><img src="landing/img/previews/shop5.jpg" alt="Demo 5" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">05</span></a><div class="card-body"><div class="card-title">Demo 5</div><div class="card-desc">Marketplace multi-vendedor</div></div><div class="card-actions"><a class="btn-demo" href="demo5.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda minimalista"><a class="card-thumb" href="demo6.html" target="_blank"><img src="landing/img/previews/shop6.jpg" alt="Demo 6" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">06</span></a><div class="card-body"><div class="card-title">Demo 6</div><div class="card-desc">Moda premium, clean</div></div><div class="card-actions"><a class="btn-demo" href="demo6.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="casa minimalista"><a class="card-thumb" href="demo7.html" target="_blank"><img src="landing/img/previews/shop7.jpg" alt="Demo 7" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">07</span></a><div class="card-body"><div class="card-title">Demo 7</div><div class="card-desc">Casa & decoração, tons claros</div></div><div class="card-actions"><a class="btn-demo" href="demo7.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo8.html" target="_blank"><img src="landing/img/previews/shop8.jpg" alt="Demo 8" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">08</span></a><div class="card-body"><div class="card-title">Demo 8</div><div class="card-desc">Loja geral, layout amplo</div></div><div class="card-actions"><a class="btn-demo" href="demo8.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda minimalista"><a class="card-thumb" href="demo9.html" target="_blank"><img src="landing/img/previews/shop9.jpg" alt="Demo 9" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">09</span></a><div class="card-body"><div class="card-title">Demo 9</div><div class="card-desc">Moda feminina minimalista</div></div><div class="card-actions"><a class="btn-demo" href="demo9.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="eletronicos"><a class="card-thumb" href="demo10.html" target="_blank"><img src="landing/img/previews/shop10.jpg" alt="Demo 10" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">10</span></a><div class="card-body"><div class="card-title">Demo 10</div><div class="card-desc">Tech & gadgets</div></div><div class="card-actions"><a class="btn-demo" href="demo10.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo11.html" target="_blank"><img src="landing/img/previews/shop11.jpg" alt="Demo 11" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">11</span></a><div class="card-body"><div class="card-title">Demo 11</div><div class="card-desc">Super loja, múltiplas categorias</div></div><div class="card-actions"><a class="btn-demo" href="demo11.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda"><a class="card-thumb" href="demo12.html" target="_blank"><img src="landing/img/previews/shop12.jpg" alt="Demo 12" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">12</span></a><div class="card-body"><div class="card-title">Demo 12</div><div class="card-desc">Moda, slider editorial</div></div><div class="card-actions"><a class="btn-demo" href="demo12.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="casa"><a class="card-thumb" href="demo13.html" target="_blank"><img src="landing/img/previews/shop13.jpg" alt="Demo 13" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">13</span></a><div class="card-body"><div class="card-title">Demo 13</div><div class="card-desc">Móveis & ambientes</div></div><div class="card-actions"><a class="btn-demo" href="demo13.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso minimalista"><a class="card-thumb" href="demo14.html" target="_blank"><img src="landing/img/previews/shop14.jpg" alt="Demo 14" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">14</span></a><div class="card-body"><div class="card-title">Demo 14</div><div class="card-desc">Layout limpo multi-nicho</div></div><div class="card-actions"><a class="btn-demo" href="demo14.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda minimalista"><a class="card-thumb" href="demo15.html" target="_blank"><img src="landing/img/previews/shop15.jpg" alt="Demo 15" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">15</span></a><div class="card-body"><div class="card-title">Demo 15</div><div class="card-desc">Moda premium, branco</div></div><div class="card-actions"><a class="btn-demo" href="demo15.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="eletronicos"><a class="card-thumb" href="demo16.html" target="_blank"><img src="landing/img/previews/shop16.jpg" alt="Demo 16" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">16</span></a><div class="card-body"><div class="card-title">Demo 16</div><div class="card-desc">Eletrônicos, banner impactante</div></div><div class="card-actions"><a class="btn-demo" href="demo16.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda"><a class="card-thumb" href="demo17.html" target="_blank"><img src="landing/img/previews/shop17.jpg" alt="Demo 17" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">17</span></a><div class="card-body"><div class="card-title">Demo 17</div><div class="card-desc">Moda masculina & feminina</div></div><div class="card-actions"><a class="btn-demo" href="demo17.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo18.html" target="_blank"><img src="landing/img/previews/shop18.jpg" alt="Demo 18" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">18</span></a><div class="card-body"><div class="card-title">Demo 18</div><div class="card-desc">Loja completa, sidebar esquerda</div></div><div class="card-actions"><a class="btn-demo" href="demo18.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo19.html" target="_blank"><img src="landing/img/previews/shop19.jpg" alt="Demo 19" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">19</span></a><div class="card-body"><div class="card-title">Demo 19</div><div class="card-desc">Marketplace moderno</div></div><div class="card-actions"><a class="btn-demo" href="demo19.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda minimalista"><a class="card-thumb" href="demo20.html" target="_blank"><img src="landing/img/previews/shop20.jpg" alt="Demo 20" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">20</span></a><div class="card-body"><div class="card-title">Demo 20</div><div class="card-desc">Moda luxo, tipografia grande</div></div><div class="card-actions"><a class="btn-demo" href="demo20.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="casa minimalista"><a class="card-thumb" href="demo21.html" target="_blank"><img src="landing/img/previews/shop21.jpg" alt="Demo 21" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">21</span></a><div class="card-body"><div class="card-title">Demo 21</div><div class="card-desc">Home decor, neutros</div></div><div class="card-actions"><a class="btn-demo" href="demo21.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo22.html" target="_blank"><img src="landing/img/previews/shop22.jpg" alt="Demo 22" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">22</span></a><div class="card-body"><div class="card-title">Demo 22</div><div class="card-desc">Multi-categoria, carrossel hero</div></div><div class="card-actions"><a class="btn-demo" href="demo22.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda"><a class="card-thumb" href="demo23.html" target="_blank"><img src="landing/img/previews/shop23.jpg" alt="Demo 23" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">23</span></a><div class="card-body"><div class="card-title">Demo 23</div><div class="card-desc">Moda, grid assimétrico</div></div><div class="card-actions"><a class="btn-demo" href="demo23.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="eletronicos multiuso"><a class="card-thumb" href="demo24.html" target="_blank"><img src="landing/img/previews/shop24.jpg" alt="Demo 24" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">24</span></a><div class="card-body"><div class="card-title">Demo 24</div><div class="card-desc">Tech, menu mega drop</div></div><div class="card-actions"><a class="btn-demo" href="demo24.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso minimalista"><a class="card-thumb" href="demo25.html" target="_blank"><img src="landing/img/previews/shop25.jpg" alt="Demo 25" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">25</span></a><div class="card-body"><div class="card-title">Demo 25</div><div class="card-desc">Loja clean, foco produto</div></div><div class="card-actions"><a class="btn-demo" href="demo25.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda"><a class="card-thumb" href="demo26.html" target="_blank"><img src="landing/img/previews/shop26.jpg" alt="Demo 26" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">26</span></a><div class="card-body"><div class="card-title">Demo 26</div><div class="card-desc">Moda, banner fullscreen</div></div><div class="card-actions"><a class="btn-demo" href="demo26.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="casa"><a class="card-thumb" href="demo27.html" target="_blank"><img src="landing/img/previews/shop27.jpg" alt="Demo 27" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">27</span></a><div class="card-body"><div class="card-title">Demo 27</div><div class="card-desc">Jardinagem & outdoor</div></div><div class="card-actions"><a class="btn-demo" href="demo27.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo28.html" target="_blank"><img src="landing/img/previews/shop28.jpg" alt="Demo 28" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">28</span></a><div class="card-body"><div class="card-title">Demo 28</div><div class="card-desc">Loja geral, header alternativo</div></div><div class="card-actions"><a class="btn-demo" href="demo28.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda minimalista"><a class="card-thumb" href="demo29.html" target="_blank"><img src="landing/img/previews/shop29.jpg" alt="Demo 29" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">29</span></a><div class="card-body"><div class="card-title">Demo 29</div><div class="card-desc">Moda essencial, branding forte</div></div><div class="card-actions"><a class="btn-demo" href="demo29.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo30.html" target="_blank"><img src="landing/img/previews/shop30.jpg" alt="Demo 30" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">30</span></a><div class="card-body"><div class="card-title">Demo 30</div><div class="card-desc">Marketplace, tabs categorias</div></div><div class="card-actions"><a class="btn-demo" href="demo30.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="eletronicos"><a class="card-thumb" href="demo31.html" target="_blank"><img src="landing/img/previews/shop31.jpg" alt="Demo 31" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">31</span></a><div class="card-body"><div class="card-title">Demo 31</div><div class="card-desc">Eletrônicos, dark accent</div></div><div class="card-actions"><a class="btn-demo" href="demo31.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda"><a class="card-thumb" href="demo32.html" target="_blank"><img src="landing/img/previews/shop32.jpg" alt="Demo 32" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">32</span></a><div class="card-body"><div class="card-title">Demo 32</div><div class="card-desc">Moda, hero vídeo</div></div><div class="card-actions"><a class="btn-demo" href="demo32.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="casa minimalista"><a class="card-thumb" href="demo33.html" target="_blank"><img src="landing/img/previews/shop33.jpg" alt="Demo 33" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">33</span></a><div class="card-body"><div class="card-title">Demo 33</div><div class="card-desc">Decoração, estilo nórdico</div></div><div class="card-actions"><a class="btn-demo" href="demo33.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo34.html" target="_blank"><img src="landing/img/previews/shop34.jpg" alt="Demo 34" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">34</span></a><div class="card-body"><div class="card-title">Demo 34</div><div class="card-desc">Loja multi-departamento</div></div><div class="card-actions"><a class="btn-demo" href="demo34.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda minimalista"><a class="card-thumb" href="demo35.html" target="_blank"><img src="landing/img/previews/shop35.jpg" alt="Demo 35" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">35</span></a><div class="card-body"><div class="card-title">Demo 35</div><div class="card-desc">Lifestyle & acessórios</div></div><div class="card-actions"><a class="btn-demo" href="demo35.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="eletronicos multiuso"><a class="card-thumb" href="demo36.html" target="_blank"><img src="landing/img/previews/shop36.jpg" alt="Demo 36" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">36</span></a><div class="card-body"><div class="card-title">Demo 36</div><div class="card-desc">Tech, layout grid denso</div></div><div class="card-actions"><a class="btn-demo" href="demo36.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda"><a class="card-thumb" href="demo37.html" target="_blank"><img src="landing/img/previews/shop37.jpg" alt="Demo 37" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">37</span></a><div class="card-body"><div class="card-title">Demo 37</div><div class="card-desc">Moda sport & casual</div></div><div class="card-actions"><a class="btn-demo" href="demo37.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="casa"><a class="card-thumb" href="demo38.html" target="_blank"><img src="landing/img/previews/shop38.jpg" alt="Demo 38" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">38</span></a><div class="card-body"><div class="card-title">Demo 38</div><div class="card-desc">Casa, pet shop & jardim</div></div><div class="card-actions"><a class="btn-demo" href="demo38.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso minimalista"><a class="card-thumb" href="demo39.html" target="_blank"><img src="landing/img/previews/shop39.jpg" alt="Demo 39" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">39</span></a><div class="card-body"><div class="card-title">Demo 39</div><div class="card-desc">Loja discreta, foco conversão</div></div><div class="card-actions"><a class="btn-demo" href="demo39.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="moda"><a class="card-thumb" href="demo40.html" target="_blank"><img src="landing/img/previews/shop40.jpg" alt="Demo 40" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">40</span></a><div class="card-body"><div class="card-title">Demo 40</div><div class="card-desc">Moda, mega menu lateral</div></div><div class="card-actions"><a class="btn-demo" href="demo40.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo41.html" target="_blank"><img src="landing/img/previews/shop41.jpg" alt="Demo 41" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">41</span></a><div class="card-body"><div class="card-title">Demo 41</div><div class="card-desc">Supermercado online</div></div><div class="card-actions"><a class="btn-demo" href="demo41.html" target="_blank">Abrir Demo</a></div></div>
+
+  <div class="card" data-category="multiuso"><a class="card-thumb" href="demo42.html" target="_blank"><img src="landing/img/previews/shop42.jpg" alt="Demo 42" loading="lazy"><div class="card-overlay"><span class="btn-preview">Live Preview</span></div><span class="card-num">42</span></a><div class="card-body"><div class="card-title">Demo 42</div><div class="card-desc">B2B & atacado</div></div><div class="card-actions"><a class="btn-demo" href="demo42.html" target="_blank">Abrir Demo</a></div></div>
+</div>
+
+<footer>&copy; 2026 <strong>SfyWeb Gold</strong> — Todos os direitos reservados.</footer>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.card').forEach(card => {
+        if (f === 'all') { card.classList.remove('hidden'); return; }
+        card.classList.toggle('hidden', !card.dataset.category.split(' ').includes(f));
+      });
+    });
+  });
+</script>
 </body>
-
 </html>
